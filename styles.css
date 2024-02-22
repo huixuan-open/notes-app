@@ -1,0 +1,87 @@
+/* styles.css */
+
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+   }
+   
+   
+   /* Container styles */
+   #app {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   }
+   
+   
+   /* Top section styles */
+   #top-section {
+    margin-bottom: 20px;
+   }
+   
+   
+   #top-section input[type="text"],
+   #top-section textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+   }
+   
+   
+   #saveButton {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+   }
+   
+   
+   #saveButton:hover {
+    background-color: #45a049;
+   }
+   
+   
+   /* Bottom section styles */
+   #bottom-section {
+    border-top: 1px solid #ccc;
+    padding-top: 20px;
+   }
+   
+   
+   #bottom-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+   }
+   
+   
+   #noteList {
+    list-style-type: none;
+    padding: 0;
+   }
+   
+   
+   #noteList li {
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 5px;
+   }
+   
+   
+   #noteList li:hover {
+    background-color: #f0f0f0;
+   }
+   
