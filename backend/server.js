@@ -2,6 +2,7 @@
 
 
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const pg = require('pg');
 
@@ -68,7 +69,7 @@ app.delete('/api/notes/:id', (req, res) => {
             return;
         }
  
-        if (result.rows.length === 0) {
+        if (result.rowCount === 0) {
             res.status(404).json({ error: 'Note not found' });
         } else {
             res.json({ message: 'Note deleted successfully' });
@@ -80,3 +81,27 @@ app.delete('/api/notes/:id', (req, res) => {
 app.listen(port, () => {
    console.log(`Server is running on http://localhost:${port}`);
 });
+const deleteNote = (id) => {
+    fetch(`/api/notes/${id}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    })
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log('Success:', data);
+            // Refresh the entire page after successful deletion
+            window.location.reload();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            // Optionally, handle the error and update the UI accordingly
+        });
+};
+

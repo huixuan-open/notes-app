@@ -1,12 +1,10 @@
 // script.js
 
-
 document.addEventListener('DOMContentLoaded', () => {
     const noteTitleInput = document.getElementById('noteTitle');
     const noteContentInput = document.getElementById('noteContent');
     const saveButton = document.getElementById('saveButton');
     const noteList = document.getElementById('noteList');
-   
    
     // Function to fetch existing notes
     function fetchNotes() {
@@ -62,17 +60,36 @@ document.addEventListener('DOMContentLoaded', () => {
     });
    });
 
-// Function to delete a note
-function deleteNote(noteId) {
-    fetch(`/api/notes/${noteId}`, {
+   // Delete Note
+   const deleteNote = (id) => {
+
+    // Add a confirmation message
+    const isConfirmed = window.confirm('Are you sure you want to delete this note?');
+
+    if (isConfirmed) {
+    fetch(`/api/notes/${id}`, {
         method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+        },
     })
-    .then(response => {
-        if (response.ok) {
-            fetchNotes();
-        } else {
-            console.error('Error deleting note:', response.statusText);
-        }
-    })
-    .catch(error => console.error('Error deleting note:', error));
-}
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then((data) => {
+            console.log('Success:', data);
+            // Refresh the entire page after successful deletion
+            window.location.reload();
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            // Optionally, handle the error and update the UI accordingly
+        });
+    } else {
+        // The user clicked "Cancel" in the confirmation dialog
+        console.log('Delete operation canceled.');
+    }
+};
