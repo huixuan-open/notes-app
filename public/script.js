@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Create delete button
                     const deleteButton = document.createElement('button');
                     deleteButton.textContent = 'Delete';
+                    deleteButton.className = 'delete-button';  // Apply the delete-button class
                     deleteButton.addEventListener('click', () => deleteNote(note.id));
                     listItem.appendChild(deleteButton);
 
