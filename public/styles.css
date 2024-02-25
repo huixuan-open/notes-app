@@ -70,13 +70,13 @@ body {
    #noteList {
     list-style-type: none;
     padding: 0;
-    display: flex;
-    justify-content: space-between; /* Aligns items with space between them */
-    align-items: center; /* Vertically centers items */
    }
    
    
    #noteList li {
+    display: flex;
+    justify-content: space-between; /* Aligns items with space between them */
+    align-items: center; /* Vertically centers items */
     padding: 10px;
     background-color: #f9f9f9;
     border-radius: 4px;
